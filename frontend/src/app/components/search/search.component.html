@@ -1,0 +1,123 @@
+<div
+  style="
+    width: 50vw;
+    justify-content: center;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 20px;
+  "
+>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field class="example-form-field">
+          <mat-label>Enter Your Search Query</mat-label>
+          <input matInput type="text" [(ngModel)]="query" />
+          <button
+            mat-button
+            *ngIf="query"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="clear()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="search()">
+          Search
+        </button>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>
+<div *ngIf="searched" style="text-align: center">
+  <button
+    mat-button
+    color="primary"
+    class="dropdown-button"
+    [matMenuTriggerFor]="menuArtists"
+  >
+    Filter By Artist
+  </button>
+  <mat-menu #menuArtists="matMenu">
+    <button
+      *ngFor="let item of aggregations.artist_filter.buckets"
+      mat-menu-item
+      (click)="filterByArtist(item.key)"
+    >
+      {{ item.key }} ({{ item.doc_count }})
+    </button>
+  </mat-menu>
+  <button
+    mat-button
+    color="primary"
+    class="dropdown-button"
+    [matMenuTriggerFor]="menuYear"
+  >
+    Filter By Year
+  </button>
+  <mat-menu #menuYear="matMenu">
+    <button
+      *ngFor="let item of aggregations.year_filter.buckets"
+      mat-menu-item
+      (click)="filterByYear(item.key)"
+    >
+      {{ item.key }} ({{ item.doc_count }})
+    </button>
+  </mat-menu>
+
+  <button
+    mat-button
+    color="primary"
+    class="dropdown-button"
+    [matMenuTriggerFor]="menuLy"
+  >
+    Filter By Lyricist
+  </button>
+  <mat-menu #menuLy="matMenu">
+    <button
+      *ngFor="let item of aggregations.writer_filter.buckets"
+      mat-menu-item
+      (click)="filterByLy(item.key)"
+    >
+      {{ item.key }} ({{ item.doc_count }})
+    </button>
+  </mat-menu>
+
+  <button
+    mat-button
+    color="primary"
+    class="dropdown-button"
+    [matMenuTriggerFor]="menuMsource"
+  >
+    Filter By Metaphor Source
+  </button>
+  <mat-menu #menuMsource="matMenu">
+    <button
+      *ngFor="let item of aggregations.metaphore_filter.buckets"
+      mat-menu-item
+      (click)="filterByMetaphor(item.key)"
+    >
+      {{ item.key }} ({{ item.doc_count }})
+    </button>
+  </mat-menu>
+  <button
+    mat-button
+    color="primary"
+    class="dropdown-button"
+    [matMenuTriggerFor]="menuMtarget"
+  >
+    Filter By Metaphor Target
+  </button>
+  <mat-menu #menuMtarget="matMenu">
+    <button
+      *ngFor="let item of aggregations.target_filter.buckets"
+      mat-menu-item
+      (click)="filterByMetaphorTraget(item.key)"
+    >
+      {{ item.key }} ({{ item.doc_count }})
+    </button>
+  </mat-menu>
+</div>
+<app-results [searchResult]="resultEvent"></app-results>

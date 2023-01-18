@@ -1,0 +1,73 @@
+<div (click)="clicked()">
+  <div *ngIf="!isClicked">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          {{ result._source.song_name }} - {{ result._source.artist }}
+        </mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </div>
+  <div *ngIf="isClicked" style="white-space: pre-line">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          {{ result._source.song_name }}
+        </mat-card-title>
+        <mat-card-subtitle
+          >Song name (eng) -
+          {{ result._source.song_name_eng }}</mat-card-subtitle
+        >
+        <mat-card-subtitle
+          >Artist - {{ result._source.artist }}</mat-card-subtitle
+        >
+        <mat-card-subtitle
+          >Album - {{ result._source.album }}</mat-card-subtitle
+        >
+        <mat-card-subtitle>Year - {{ result._source.year }}</mat-card-subtitle>
+      </mat-card-header>
+      <!-- <mat-card-content>
+        {{ result._source.lyrics }}
+      </mat-card-content> -->
+
+      <mat-card-content>
+        <div
+          style="
+            border: 1px solid rgb(207, 207, 207);
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 5px;
+          "
+        >
+          <h2 style="font-weight: 500">Metaphors</h2>
+          <mat-list>
+            <mat-list-item
+              *ngFor="let item of result._source.metaphors"
+              style="margin-bottom: 20px"
+            >
+              <span matListItemTitle style="font-weight: 800">{{
+                item.metaphor
+              }}</span>
+              <span matListItemLine>Source:- {{ item.source_domain }}</span>
+              <span matListItemLine>Target:- {{ item.target_domain }}</span>
+              <span matListItemLine>Meaning:- {{ item.meaning }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div
+          style="
+            border: 1px solid rgb(207, 207, 207);
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+          "
+        >
+          <h2 style="font-weight: 500">Lyrics</h2>
+          <p>
+            {{ result._source.lyrics }}
+          </p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.example-form-field {
+    width: 40vw;
+    padding: 20px;
+}
+
+.dropdown-button {
+    display: inline-block;
+    margin: 0 20px;
+}
