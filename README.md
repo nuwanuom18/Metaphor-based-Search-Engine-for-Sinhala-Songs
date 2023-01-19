@@ -26,4 +26,3 @@ A custom analyzer with icu_tokenizer, custom ngam Filter and a custom stop word 
 
 ## Demonstration
 ![](https://github.com/nuwanuom18/Metaphor-based-Search-Engine-for-Sinhala-Songs/blob/main/resources/demo.gif)
-### Youtube: https://www.youtube.com/watch?v=RX4VIya_688
