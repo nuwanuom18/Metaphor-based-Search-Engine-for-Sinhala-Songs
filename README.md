@@ -18,3 +18,11 @@ Search Sinhala songs in the corpus based on
 - Attributes of a song: Lyricist, Singer, Year, Composer, Album
 - Attributes of metaphor: Type, Source domain, Target domain, Meaning
 
+### Analyzer of Sinhala Wordss
+A custom analyzer with icu_tokenizer, custom ngam Filter and a custom stop word filter.
+
+## Flow
+![plot](./resources/Flow.png)
+
+## Demonstration
+
