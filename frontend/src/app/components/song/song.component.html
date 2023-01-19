@@ -22,6 +22,9 @@
           >Artist - {{ result._source.artist }}</mat-card-subtitle
         >
         <mat-card-subtitle
+          >Lyricist - {{ result._source.lyricist }}</mat-card-subtitle
+        >
+        <mat-card-subtitle
           >Album - {{ result._source.album }}</mat-card-subtitle
         >
         <mat-card-subtitle>Year - {{ result._source.year }}</mat-card-subtitle>
@@ -50,7 +53,13 @@
               }}</span>
               <span matListItemLine>Source:- {{ item.source_domain }}</span>
               <span matListItemLine>Target:- {{ item.target_domain }}</span>
+              <span matListItemLine
+                >Target (Eng):- {{ item.target_domain_eng }}</span
+              >
               <span matListItemLine>Meaning:- {{ item.meaning }}</span>
+              <span matListItemLine
+                >Meaning (Eng):- {{ item.meaning_eng }}</span
+              >
             </mat-list-item>
           </mat-list>
         </div>

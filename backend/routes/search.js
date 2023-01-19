@@ -6,8 +6,8 @@ const router = express.Router();
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 
-var stopwords = require("../../data/stop_words.json");
-var stemwords = require("../../data/artist_identiry_words.json");
+var nount_stop_words = require("../../data/stop_words.json");
+var possessive_pro = require("../../data/artist_identiry_words.json"); //
 var named_entities = require("../../data/selected_names.json");
 
 router.post("/", async function (req, res) {
@@ -35,14 +35,14 @@ router.post("/", async function (req, res) {
     if (/^[A-Za-z0-9/\s/]*$/.test(req.body.query)) {
       console.log(req.body.query);
       // English
-      // Increase score based on stopwords
+      // Increase score based on nount_stop_words
 
-      if (stopwords.songs_eng.includes(word)) {
+      if (nount_stop_words.songs_eng.includes(word)) {
         song_title_eng_boost += 1;
         removing_stopwords.push(word);
       }
 
-      if (stopwords.year_eng.includes(word)) {
+      if (nount_stop_words.year_eng.includes(word)) {
         // 2012 year, in 2012
         year_en += 1;
         removing_stopwords.push(word);
@@ -60,8 +60,8 @@ router.post("/", async function (req, res) {
       //   field_type = "best_fields";
       // }
 
-      // Increase score based on stemwords
-      stemwords.artist_sin.forEach((stemword) => {
+      // Increase score based on possessive_pro
+      possessive_pro.artist_sin.forEach((stemword) => {
         if (word.includes(stemword)) {
           var new_word = word.replace(stemword, "");
           query = query.replace(word, new_word);
@@ -70,32 +70,32 @@ router.post("/", async function (req, res) {
         }
       });
 
-      // Increase score based on stopwords
-      if (stopwords.artist.includes(word)) {
+      // Increase score based on nount_stop_words
+      if (nount_stop_words.artist.includes(word)) {
         artist_boost += 1;
         removing_stopwords.push(word);
       }
 
-      if (stopwords.lyricist.includes(word)) {
+      if (nount_stop_words.lyricist.includes(word)) {
         writer_boost += 1;
         removing_stopwords.push(word);
       }
 
-      if (stopwords.songs.includes(word)) {
+      if (nount_stop_words.songs.includes(word)) {
         song_title_sin_boost += 1;
         removing_stopwords.push(word);
       }
 
-      if (stopwords.year.includes(word)) {
+      if (nount_stop_words.year.includes(word)) {
         year_si += 1;
         removing_stopwords.push(word);
       }
 
-      if (stopwords.metaphor.includes(word)) {
+      if (nount_stop_words.metaphor.includes(word)) {
         metaphors += 1;
         removing_stopwords.push(word);
       }
-      if (stopwords.target_domain.includes(word)) {
+      if (nount_stop_words.target_domain.includes(word)) {
         metaphors_meaning += 1;
         metaphors_target += 2;
         removing_stopwords.push(word);
@@ -126,7 +126,7 @@ router.post("/", async function (req, res) {
     };
   }
 
-  stopwords.common.forEach((word) => {
+  nount_stop_words.common.forEach((word) => {
     query = query.replaceAll(word, "");
   });
   console.log(query.trim());
@@ -148,6 +148,8 @@ router.post("/", async function (req, res) {
             "metaphors.target_domain",
             "metaphors.source_domain",
             "metaphors.meaning",
+            "metaphors.meaning_eng",
+            "metaphors.target_domain_eng",
           ],
         },
         query: {
@@ -214,6 +216,8 @@ router.post("/", async function (req, res) {
             "metaphors.target_domain",
             "metaphors.source_domain",
             "metaphors.meaning",
+            "metaphors.meaning_eng",
+            "metaphors.target_domain_eng",
           ],
         },
         query: {
