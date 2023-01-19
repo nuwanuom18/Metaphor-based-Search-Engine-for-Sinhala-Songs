@@ -15,8 +15,8 @@ Search Sinhala songs in the corpus based on
 
 ### Corpus
 - 100 popular Sinhala songs in the 20th century
-- Attributes of a song: Lyricist, Singer, Year, Composer, Album
-- Attributes of metaphor: Type, Source domain, Target domain, Meaning
+- Attributes of a song: Song name, Song name in English letters, Lyricist, Artist, Year, Album
+- Attributes of metaphor: Metaphor name, Source domain, Target domain, Meaning, Target domain in English, Meaning in English
 
 ### Analyzer of Sinhala Wordss
 A custom analyzer with icu_tokenizer, custom ngam Filter and a custom stop word filter.
