@@ -25,4 +25,4 @@ A custom analyzer with icu_tokenizer, custom ngam Filter and a custom stop word 
 ![plot](./resources/Flow.png)
 
 ## Demonstration
-
+![](https://github.com/nuwanuom18/Metaphor-based-Search-Engine-for-Sinhala-Songs/blob/main/resources/demo.gif)
