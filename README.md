@@ -6,7 +6,7 @@ This project consists of two phases. Building a text corpus of metaphors that ar
 The objective of this project is to provide a metaphor-based search application primarily targeting songwriters and students/undergraduates who learn Sinhala literature. With the use of this application, they can search Sinhala songs in the corpus primarily by metaphors or meanings of metaphors, to use in writing songs/studying.
 
 ### Use Case
-Search Sinhala songs in the corpus based on 
+> Search Sinhala songs in the corpus based on 
 - Metaphor
 - Meaning of a metaphor
 - Source domain
@@ -15,7 +15,8 @@ Search Sinhala songs in the corpus based on
 - Artist
 - Song name
 - Song name in english letters
-- Year
+- Year <br>
+> And Search results can be filtered by Artist or Year or Lyricist or Source domain or Target domain
 
 ### Corpus
 - 100 popular Sinhala songs in the 20th century
