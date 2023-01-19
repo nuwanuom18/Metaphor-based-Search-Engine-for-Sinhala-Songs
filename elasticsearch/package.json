@@ -2,7 +2,7 @@
   "name": "elasticsearch",
   "version": "1.0.0",
   "description": "",
-  "main": "index_data.js",
+  "main": "indexing_songs.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
