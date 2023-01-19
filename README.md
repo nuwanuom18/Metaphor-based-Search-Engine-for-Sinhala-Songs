@@ -12,6 +12,10 @@ Search Sinhala songs in the corpus based on
 - Source domain
 - Target domain
 - Lyricist
+- Artist
+- Song name
+- Song name in english letters
+- Year
 
 ### Corpus
 - 100 popular Sinhala songs in the 20th century
